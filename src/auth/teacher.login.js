@@ -20,7 +20,7 @@ route.post('/teacher/signin', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        await user.save({ validateBeforeSave: false })
+        await user.save({ validateBeforeSave: false})   //{ validateBeforeSave: false }
 
         res.send({ token })
         

@@ -1,11 +1,8 @@
 const mongoose = require('mongoose')
-const randToken = require('rand-token')
 
 const classSchema = new mongoose.Schema({
     classId: {
-        type: String,
-        required: true,
-        default: randToken.generate(8)
+        type: String
     },
     className: {
         type: String,
@@ -17,7 +14,20 @@ const classSchema = new mongoose.Schema({
     subjectName: {
         type: String,
         required: true
-    }
+    },
+    students: [{
+        student: {
+            id: {
+                type: String
+            },
+            name: {
+                type: String
+            },
+            email: {
+                type: String
+            }
+        }
+    }]
 })
 
 const Classes = mongoose.model('Classes', classSchema)

@@ -19,6 +19,12 @@ const teacherLoginRoute = require('./auth/teacher.login')
 //import class route
 const classRoute = require('./routers/class.route')
 
+//import student route
+const studentRoute = require('./routers/student.route')
+
+//import student login route
+const studentLoginRoute = require('./auth/student.login')
+
 const app = express()
 
 //init port from env file
@@ -30,6 +36,8 @@ app.use(cors())
 app.use(teacherRoute)
 app.use(teacherLoginRoute)
 app.use(classRoute)
+app.use(studentRoute)
+app.use(studentLoginRoute)
 
 //make app run on port
 app.listen(port, () => {

@@ -34,7 +34,7 @@ route.post('/newTeacher', upload.single('cv'), async (req, res) => {
     }
 })
 
-route.get('/profile', auth, async (req, res) => {
+route.get('/teacher/profile', auth, async (req, res) => {
     const user = req.user
 
     res.send({ user })

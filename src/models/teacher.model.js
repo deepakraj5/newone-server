@@ -51,23 +51,33 @@ const teacherSchema = new mongoose.Schema({
             type: String,
             required: true
         }
+    }],
+    classes: [{
+        _class: {
+            classId: {
+                type: String
+            },
+            className: {
+                type: String
+            }
+        }
     }]
 })
 
-teacherSchema.path('username').validate(async (value) => {
-    const usernameCount = await mongoose.models.Teacher.countDocuments({ username: value })
-    return !usernameCount
-}, 'Username Already Exists')
+// teacherSchema.path('username').validate(async (value) => {
+//     const usernameCount = await mongoose.models.Teacher.countDocuments({ username: value })
+//     return !usernameCount
+// }, 'Username Already Exists')
 
-teacherSchema.path('email').validate(async (value) => {
-    const emailCount = await mongoose.models.Teacher.countDocuments({ email: value })
-    return !emailCount
-}, 'Email Already Exists')
+// teacherSchema.path('email').validate(async (value) => {
+//     const emailCount = await mongoose.models.Teacher.countDocuments({ email: value })
+//     return !emailCount
+// }, 'Email Already Exists')
 
-teacherSchema.path('phoneNumber').validate(async (value) => {
-    const phoneNumberCount = await mongoose.models.Teacher.countDocuments({ phoneNumber: value })
-    return !phoneNumberCount
-}, 'Phone Number Already Exists')
+// teacherSchema.path('phoneNumber').validate(async (value) => {
+//     const phoneNumberCount = await mongoose.models.Teacher.countDocuments({ phoneNumber: value })
+//     return !phoneNumberCount
+// }, 'Phone Number Already Exists')
 
 teacherSchema.methods.generateAuthToken = async function () {
     const user = this
